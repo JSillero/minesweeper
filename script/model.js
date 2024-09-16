@@ -3,7 +3,7 @@ class Cell {
         // state defines how the cell will behave, 0 means there is not a mine in it , a number between 1 to 8 defines the number of adjacent bombs, a nevative value indicates there is a bomb here
         this.state = 0;
         //reveal defines if the tile has been revealed or not
-        this.reveal = false;
+        this.revealed = false;
     }
 
     mine() {
@@ -17,7 +17,7 @@ class Cell {
 
     /* Reveals the cell and returns state */
     reveal() {
-        this.reveal = true;
+        this.revealed = true;
         return this.state;
     }
 
@@ -26,7 +26,9 @@ class Cell {
 class Board {
 
     constructor(size, mines) {
-        this.board = [];
+        this.mineField = [];
+        this.revealedWincon = size * size - mines; //value chechcked against currentRevealed to check the wincon
+        this.currentRevealed = 0; //value that stores currently revealted tiles 
 
         /* Fills the board with cells */
         for (let index = 0; index < size; index++) {
@@ -34,7 +36,7 @@ class Board {
             for (let index2 = 0; index2 < size; index2++) {
                 arrayCells.push(new Cell());
             }
-            this.board.push(arrayCells);
+            this.mineField.push(arrayCells);
         }
 
         /*Put mines in the board
@@ -43,8 +45,8 @@ class Board {
         for (let index = 0; index < mines;) {
             let x = Math.floor(Math.random() * (size - 1))
             let y = Math.floor(Math.random() * (size - 1))
-            if (this.board[x][y].state > -1) {
-                this.board[x][y].mine();
+            if (this.mineField[x][y].state > -1) {
+                this.mineField[x][y].mine();
                 /* Increase the counter of surounding cells to keep track of how many mines there are */
 
 
@@ -52,7 +54,7 @@ class Board {
                     for (let suby = -1; suby < 2; suby++) {
                         //catch the error in case we try to access an non existent array position.
                         try {
-                            this.board[x + subx][y + suby].increaseState();
+                            this.mineField[x + subx][y + suby].increaseState();
                         } catch (error) {
 
                         }
@@ -65,13 +67,12 @@ class Board {
 
     }
 
-    logBoard() {
-        this.board.forEach(line => {
-            console.log(...line)
-        });
+
+    increaseRevealCount() {
+
+        if (++this.currentRevealed == this.revealedWincon) {
+            return true;
+        }
+        return false;
     }
 }
-
-console.log("aaaa");
-new Board(6, 6).logBoard();
-cos

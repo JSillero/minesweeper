@@ -1,0 +1,14 @@
+.line {
+    display: flex;
+    gap: 4px;
+}
+
+.flag {
+    background-color: red;
+}
+
+#minefield>.line>div {
+    height: 30px;
+    width: 30px;
+    border: 3px grey groove;
+}
