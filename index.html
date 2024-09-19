@@ -15,17 +15,110 @@
 </head>
 
 <body>
-    <header>Minesweeper</header>
-    <section>
-        Difficulty? some stuff like that?
-    </section>
-    <section id="minefield">
 
-    </section>
-    <footer>
-        <div>About</div>
-        <div>Settings</div>
+    <div id="mainElement">
+
+
+        <header>
+            <h1>Grave Robber</h1>
+            <h3>Avoid the undead!</h3>
+        </header>
+
+        <section id="mainMenu">
+            <p>Difficulty:</p>
+            <label>
+                Easy
+                <input type="radio" name="difficulty" id="difEasy1" value="easy" checked>
+            </label>
+            <label>
+                Medium
+                <input type="radio" name="difficulty" id="difMid1" value="mid">
+            </label>
+            <label>
+                Hard
+                <input type="radio" name="difficulty" id="difHard1" value="hard">
+            </label>
+            <p><button class="start" data-button="">Game start</button></p>
+
+        </section>
+
+        <section id="gameInfo" class="hidden">
+            <div>
+                Timer: <span id="timer"></span>
+            </div>
+            <div id="flagElement" class="hidden">
+                Flag Count: <span id="flagCount">0</span>/<span id="totalMines"></span>
+            </div>
+        </section>
+
+        <section id="minefield">
+
+        </section>
+
+        <div id="winstatescreen" class="hidden">
+            <h2 id="winstatemessage">You won!</h2>
+            <p id="recordMessage">
+                Time it took <span id="yourTime"></span> <br> Best time <span id="topTime"></span>
+            </p>
+            <div id="newrecordMessage" class="hidden"> <b>New record!</b> </div>
+
+            <div class="selector">
+                <p>Difficulty:</p>
+                <label>
+                    Easy
+                    <input type="radio" name="difficulty2" id="difEasy2" checked>
+                </label>
+                <label>
+                    Medium
+                    <input type="radio" name="difficulty2" id="difMid2">
+                </label>
+                <label>
+                    Hard
+                    <input type="radio" name="difficulty2" id="difHard2">
+                </label>
+            </div>
+            <button class="start">Play Again</button>
+            <button id="mainMenuButton">Main Menu</button>
+        </div>
+
+        <section id="settings" class="hidden">
+            <h3>Settings</h3>
+            <p>
+                (Game is paused)
+            </p>
+            <label>
+                Volume
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </label>
+
+            <div>
+                <p>Difficulty (will only change when the game is reset)</p>
+                <label>
+                    Easy
+                    <input type="radio" name="difficulty3" id="difEasy3" checked>
+                </label>
+                <label>
+                    Medium
+                    <input type="radio" name="difficulty3" id="difMid3">
+                </label>
+                <label>
+                    Hard
+                    <input type="radio" name="difficulty3" id="difHard3">
+                </label>
+            </div>
+
+
+            <p><button id="closeSettings">Save & Exit</button></p>
+
+        </section>
+
+
+    </div>
+    <footer>  
+    <div id="about">About</div>
+    <div id="btnSettings">Settings</div>
     </footer>
+
 </body>
 
 </html>

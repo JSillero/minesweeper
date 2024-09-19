@@ -1,14 +1,150 @@
+/* Variables */
+:root {
+    --cell_separation: 4px;
+}
+
+body {
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+/* Elements distribution */
+#mainElement {
+    border: 40px solid transparent;
+    border-image: url(../img/boneborder.png) round;
+    border-image-slice: 31%;
+
+    display: flex;
+    flex-flow: column;
+
+    max-width: 45%;
+    padding: 30px 20px;
+    margin: 0 auto;
+    margin-top: 40px;
+    min-height: 70vh;
+
+    background: rgb(207, 207, 207);
+    background: radial-gradient(rgb(207, 207, 207 )0%, rgba(0, 0, 255, 0) 80%);
+    /* box-shadow: 0px 0px 10px #cfcfcf; */
+
+
+    text-align: center;
+
+
+}
+
+
+
 .line {
     display: flex;
-    gap: 4px;
+    gap: var(--cell_separation);
+    justify-content: center;
 }
 
-.flag {
-    background-color: red;
+
+
+#gameInfo {
+    margin-block: 20px;
 }
 
-#minefield>.line>div {
-    height: 30px;
-    width: 30px;
-    border: 3px grey groove;
+#minefield>.line {
+    >div {
+        height: 30px;
+        width: 30px;
+        margin-top: var(--cell_separation);
+        border: 4px #b3b3b3 inset;
+        background-color: lightgray;
+    }
+
+    .cell {
+        border: 4px #b3b3b3 outset;
+    }
+
+    .flag {
+        border: 4px #b3b3b3 outset;
+        background-image: url("../img/candle.png");
+    }
+
+
+    .cell:hover {
+        cursor: url("../img/shovelpointer.png");
+    }
+
+    .cell:hover::after {
+        content: url("../img/shovelpointer.png");
+    }
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    color: whitesmoke;
+
+    div {
+        padding: 25px;
+    }
+
+}
+
+/* Settings styles */
+#settings {
+    h3 {
+        font-size: 2rem;
+    }
+
+    position: fixed;
+    width: inherit;
+    background-color: #cfcfcf;
+    /* display: flex; */
+    width: 45vw;
+    height: 70vh;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* endstate message styles */
+#winstatescreen {
+    position: fixed;
+    margin: 0px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: wheat;
+    padding: 25px;
+
+    font-weight: bold;
+    color: rgb(190, 190, 190);
+    text-shadow: 2px 2px rgb(64, 60, 60);
+
+
+    background: url(../img/gravestone.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    width: 340px;
+
+    h2 {
+        margin-top: 60px;
+    }
+
+    button {
+        display: block;
+        margin: 15px auto;
+        background-color: rgb(190, 190, 190);
+        border: 3px inset;
+        color: #363131;
+    }
+}
+
+
+.hidden {
+    display: none !important;
+    position: none;
 }
