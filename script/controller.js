@@ -84,7 +84,7 @@ for (const button of playButtons) {
         winstate = null;
         switch (difficulty) {
             case "easy":
-                createMineField(8, 1);
+                createMineField(8, 6);
                 totalMines.innerHTML = "1";
 
                 break;
